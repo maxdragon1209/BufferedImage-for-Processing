@@ -27,13 +27,13 @@ java {
 // Such as:
 // <libName>.jar will be the name of your build jar
 // <libName>.zip will be the name of your release file
-val libName = "myLibrary"
+val libName = "BufferedImageProcessing"
 
 // The group ID of your library, which uniquely identifies your project.
 // It's often written in reverse domain name notation.
 // For example, if your website is "myDomain.com", your group ID would be "com.myDomain".
 // Replace "com.myDomain" with your own domain or organization name.
-group = "com.myDomain"
+group = "maxlib"
 
 // The version of your library. It usually follows semantic versioning (semver),
 // which uses three numbers separated by dots: "MAJOR.MINOR.PATCH" (e.g., "1.0.0").
@@ -86,28 +86,30 @@ repositories {
     mavenCentral()
 
     // these two are needed to resolve processing4 from micycle1's repo
-    maven { url = uri("https://jitpack.io") }
-    maven { url = uri("https://jogamp.org/deployment/maven/") }
+    // maven { url = uri("https://jitpack.io") }
+    // maven { url = uri("https://jogamp.org/deployment/maven/") }
 }
 
 // Add any external dependencies your library requires here.
 // The provided example uses Apache Commons Math. Replace or add as needed.
 dependencies {
     // resolve Processing core
-    compileOnly(group = "com.github.micycle1", name = "processing-core-4", version = "4.3.1")
+    // compileOnly(group = "com.github.micycle1", name = "processing-core-4", version = "4.3.1")
     // We are currently resolving from an unofficial, jitpack-enabled, processing4 repository.
     // Eventually, this will change to an official source.
 
     // insert your external dependencies
-    implementation(group = "org.apache.commons", name = "commons-math3", version = "3.6.1")
+    // implementation(group = "org.apache.commons", name = "commons-math3", version = "3.6.1")
     // The provided example uses commons-math3. Replace or add as needed.
 
     // To add a dependency on a Processing library that is installed locally,
     // uncomment the line below, and replace <library folder> with the location of that library
     // compileOnly(fileTree("$sketchbookLocation/libraries/<library folder>/library"))
+    
+    compileOnly(group = "org.processing", name = "core", version = "4.3.1")
 
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    // testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    // testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 tasks.test {
